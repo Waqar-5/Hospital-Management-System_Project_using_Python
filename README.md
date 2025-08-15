@@ -1,23 +1,37 @@
-🏥 Hospital Management System (Basic CLI)
-Overview
-This is a Command-Line Hospital Management System built using basic Python concepts such as lists, dictionaries, loops, conditions, and functions.
-It allows managing patient records efficiently and is perfect for beginners to understand Python fundamentals in a real-world project.
+# 🏥 Hospital Management System (Basic CLI)
 
-Features
-✅ Add Patient – Store patient details including ID, Name, Age, Disease, and Room Number.
-✅ View Patients – Display all patients in a neatly formatted table.
-✅ Search Patient – Find a patient by Name or ID.
-✅ Delete Patient – Remove patient records using ID.
-✅ User-Friendly CLI Menu – Easy navigation through numbered options.
-Data Storage
-Patient information is stored in Python lists as dictionaries.
-Each patient gets a unique ID automatically.
-No external database is required – fully self-contained in Python.
-Technologies Used
-Python 3.x
-Basic concepts: variables, lists, dictionaries, loops, conditions, functions, input/output.
-How to Use
-Clone the repository
+## Overview
+This is a **Command-Line Hospital Management System** built using **basic Python concepts** such as **lists, dictionaries, loops, conditions, and functions**.  
+It allows managing patient records efficiently and is perfect for beginners to understand **Python fundamentals in a real-world project**.
+
+---
+
+## Features
+- ✅ **Add Patient** – Store patient details including ID, Name, Age, Disease, and Room Number.
+- ✅ **View Patients** – Display all patients in a neatly formatted table.
+- ✅ **Search Patient** – Find a patient by **Name or ID**.
+- ✅ **Delete Patient** – Remove patient records using ID.
+- ✅ **User-Friendly CLI Menu** – Easy navigation through numbered options.
+
+---
+
+## Data Storage
+- Patient information is stored in **Python lists** as **dictionaries**.
+- Each patient gets a **unique ID** automatically.
+- No external database is required – fully **self-contained in Python**.
+
+---
+
+## Technologies Used
+- **Python 3.x**
+- Basic concepts: `variables`, `lists`, `dictionaries`, `loops`, `conditions`, `functions`, `input/output`.
+
+---
+
+## How to Use
+
+1. **Clone the repository**  
+```bash
 git clone https://github.com/Waqar-5/Hospital-Management-System_Project_using_Python.git
 
 
@@ -93,4 +107,6 @@ If you want, I can also make an **enhanced version with badges, contributions, a
 
 Do you want me to do that?
 
+
 <img width="540" height="456" alt="Image" src="https://github.com/user-attachments/assets/2a6c63a3-2e40-48d1-9d4b-967913f4b462" />
+
