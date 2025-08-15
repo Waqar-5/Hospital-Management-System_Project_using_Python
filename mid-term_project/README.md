@@ -75,6 +75,7 @@ Enter Disease: Fever
 Enter Room Number: 101
 ✅ Added Patient #1: Ali
 
+<img width="540" height="456" alt="Image" src="https://github.com/user-attachments/assets/2a6c63a3-2e40-48d1-9d4b-967913f4b462" />
 
 
 Why This Project is Useful
@@ -113,5 +114,15 @@ If you want, I can also make an **enhanced version with badges, contributions, a
 Do you want me to do that?
 
 
-<img width="540" height="456" alt="Image" src="https://github.com/user-attachments/assets/2a6c63a3-2e40-48d1-9d4b-967913f4b462" />
+
+
+
+
+
+
+
+
+
+
+
 
