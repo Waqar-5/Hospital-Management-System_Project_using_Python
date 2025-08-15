@@ -106,3 +106,7 @@ This project is open-source and free to use.
 If you want, I can also make an **enhanced version with badges, contributions, and professional formatting** to make it look like a **real polished GitHub repo**.  
 
 Do you want me to do that?
+
+
+
+<img width="540" height="456" alt="_- visual selection (2)" src="https://github.com/user-attachments/assets/e420975d-2f0d-429b-a719-51d61ed2f75f" />
