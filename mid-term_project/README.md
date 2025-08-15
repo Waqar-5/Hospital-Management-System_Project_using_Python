@@ -108,5 +108,5 @@ If you want, I can also make an **enhanced version with badges, contributions, a
 Do you want me to do that?
 
 
-<img width="540" height="456" alt="_- visual selection (2)" src="https://github.com/user-attachments/assets/e9a84b35-dd59-43c2-817f-8efba00f0234" />
+<img width="540" height="456" alt="Image" src="https://github.com/user-attachments/assets/2a6c63a3-2e40-48d1-9d4b-967913f4b462" />
 
