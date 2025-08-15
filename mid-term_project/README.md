@@ -1,9 +1,11 @@
 
-
-<img width="540" height="456" alt="Image" src="https://github.com/user-attachments/assets/2a6c63a3-2e40-48d1-9d4b-967913f4b462" />
-
-
 # 🏥 Hospital Management System (Basic CLI)
+
+
+                                                         <img width="540" height="456" alt="Image" src="https://github.com/user-attachments/assets/2a6c63a3-2e40-48d1-9d4b-967913f4b462" />
+
+
+
 
 ## Overview
 This is a **Command-Line Hospital Management System** built using **basic Python concepts** such as **lists, dictionaries, loops, conditions, and functions**.  
@@ -75,7 +77,6 @@ Enter Disease: Fever
 Enter Room Number: 101
 ✅ Added Patient #1: Ali
 
-<img width="540" height="456" alt="Image" src="https://github.com/user-attachments/assets/2a6c63a3-2e40-48d1-9d4b-967913f4b462" />
 
 
 Why This Project is Useful
