@@ -83,7 +83,8 @@ Can be extended later to add staff, departments, or reports.
 
 Author
 
-Waqar Ali – GitHub Profile
+Waqar Ali – https://github.com/Waqar-5/
+
 
 
 License
