@@ -1,7 +1,7 @@
 
 # 🏥 Hospital Management System (Basic CLI)
 
-<img width="540" height="456" alt="Image" src="https://github.com/user-attachments/assets/2a6c63a3-2e40-48d1-9d4b-967913f4b462" />
+<img width="666" height="444" alt="_- visual selection" src="https://github.com/user-attachments/assets/e6dc4c48-e8dd-46b1-bb25-87a9bbda02a2" />
 
 
 
