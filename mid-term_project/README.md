@@ -105,3 +105,6 @@ This project is open-source and free to use.
 If you want, I can also make an **enhanced version with badges, contributions, and professional formatting** to make it look like a **real polished GitHub repo**.  
 
 Do you want me to do that?
+
+
+![alt text](<_- visual selection (2).png>)

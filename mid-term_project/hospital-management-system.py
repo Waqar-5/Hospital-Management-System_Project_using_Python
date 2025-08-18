@@ -1,37 +1,37 @@
-
-
-
-
 # ===========================================
-# Hospital Management System (Basic CLI)
-# Using Python: Lists, Dictionaries, Loops, Conditions, Functions
+# Hospital Management System (Advanced CLI)
 # ===========================================
 
-# ------------------------------
-# Global Data Structures
-# ------------------------------
+
+import datetime   # Import datetime module → used for handling dates and times (like admission date, receipt date)
 
 
-patients = []  # List to store patient records as dictionaries
-next_id = 1    # Unique ID counter for patients
+patients = []     # Empty list to store all patient records (each patient is saved as a dictionary)
+next_id = 1       # Counter for unique patient ID numbers (starts from 1)
+
 
 # ------------------------------
 # Utility Functions
 # ------------------------------
 
+def generate_patient_id():
+    """ Generate unique hospital-style patient ID like HSP-001 """
+    return f"HSP-{next_id:03d}"  # Format ID with leading zeros → Example: HSP-001, HSP-002
+
+
 def print_menu():
-    """
-    Print the main menu options
-    """
-    print("\n" + "="*40)  # Decorative separator
-    print("🏥 HOSPITAL MANAGEMENT SYSTEM 🏥") # stylish header
-    print("="*40)
-    print("1) Add Patient")
-    print("2) View Patients")
-    print("3) Search Patient")
-    print("4) Delete Patient")
-    print("5) Exit")
-    print("="*40)  #Result: "========================================"
+    """ Print the main menu options """
+    print("\n" + "="*50)   # Print 50 equal signs (=) to make a border
+    print(" 🏥  WELCOME TO CITY HOSPITAL MANAGEMENT SYSTEM 🏥 ")   # Title of program
+    print("="*50)   # Print 50 equal signs (=) again for styling
+    print("1) Admit Patient")   # Option 1: Add new patient
+    print("2) View Patients")   # Option 2: Show all admitted patients
+    print("3) Search Patient")  # Option 3: Search patient by ID or Name
+    print("4) Discharge Patient (with Receipt)")  # Option 4: Discharge patient and print receipt
+    print("5) Generate Receipt (Manually)")   # Option 5: Manually generate receipt for a patient
+    print("6) Exit")   # Option 6: Exit program
+    print("="*50)   # Print 50 equal signs (=) again
+
 
 
 # ------------------------------
@@ -39,138 +39,182 @@ def print_menu():
 # ------------------------------
 
 def add_patient():
-    """
-    Add a new patient to the system
-    """
+    """ Admit a new patient to the hospital """
+    global next_id  # Use global variable next_id to assign unique IDs
 
-    global next_id # Access and update global patient ID counter
 
-    print("\n-- Add New Patient -- ") # Section header
-    name = input("Enter Patient Name: ").strip() # Get patient name and remove extra spaces
-    age = input("Enter Patient Age: ").strip()  #Get patient age
-    disease = input("Enter Disease: ").strip()  #Get disease info
-    room = input("Enter Room Number: ").strip()  #Get room number
 
-    # Create a patient dictionary
-    # Values come from the user input
+    
+    print("\n-- 📝 Admit New Patient --")
+    name = input("Enter Patient Name: ").strip().title()      # Take name, remove spaces, format properly (Ex: "john" → "John")
+    age = input("Enter Patient Age: ").strip()                # Take age as input
+    disease = input("Enter Disease: ").strip().title()        # Take disease name, format properly
+    doctor = input("Assigned Doctor: ").strip().title()       # Take doctor name, format properly
+    room = input("Enter Room Number: ").strip()               # Take room number
+    bill = input("Enter Treatment Bill Amount (PKR): ").strip()  # Take bill amount
+
+
+    # Create dictionary for new patient
     patient = {
-        "id": next_id,
+        "id" : generate_patient_id(), #Auto-generate unique ID
         "name": name,
         "age": age,
         "disease": disease,
+        "doctor": doctor,
         "room": room,
+        "bill": bill,
+        "admission_date": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),   # Save current date/time
+        "status": "Admitted"   # Default status when admitted
     }
 
-    patients.append(patient)  #Add patient to the global list
-    print(f"✅ Added Patient #{next_id}: {name}") #confirmation message
-    next_id += 1 #Increament patient ID counter for next patient
+    patients.append(patient)   # Add patient dictionary to patients list
+    print(f"✅ Patient Admitted Successfully! ID: {patient['id']} | Name: {name}")   # Confirmation message
+    next_id += 1   # Increase ID counter for next patient
 
 def view_patients():
-    """
-    Display all patients in a table format
-    """
-    print("\n-- All Patients --") # Section header
+    """ Display all admitted patients """
+    print("\n-- 👥 All Patients  --")
 
-    if not patients: #Check if list is empty
-        print("⚠️ No patients in the system yet..")
-        return # exit function if no patients
+    if not patients:  # If no patients are in the list
+        print(" ⚠️ No patients admitted yet. ")  # Show message
+        return
     
-    #print table header
-    print("-"*70)
-    print(f"{'ID':<5} {'Name':<20} {'Age':<5} {'Disease':<25} {'Room':<6}")  # to get this: ID    Name                 Age   Disease                  Room  
-    print("-"*70)
+     # Print table header
+    print("-"*90)   
+    print(f"{'ID':<10} {'Name':<20} {'Age':<5} {'Disease':<15} {'Doctor':<15} {'Room':<6} {'Status':<10}")
+    print("-"*90)
 
-    # Loop through patients and print each record
+    # Print each patient details in table format
     for p in patients:
-        print(f"{p['id']:<5} {p['name']:<20} {p['age']:<5} {p['disease']:<25} {p['room']:<6}")
-
-    print("-"*70)
+        print(f"{p['id']:<10} {p['name']:<20} {p['age']:<5} {p['disease']:<15} {p['doctor']:<15} {p['room']:<6} {p['status']:<10}")
+    
+    print("-"*90)  #End line after printing all patients
 
 
 def search_patient():
-    """
-    Search for a patient by name or ID
-    """
+    """ Search for a patient by ID or Name """
+    print("\n-- 🔎 Search Patient --")
 
-    print("\n-- Search Patient --") # section header
-
-    # Ask the user weather to search by name or ID
-    key = input("Search by 'name' or 'id': ").strip().lower()
-    if key not in ("name", "id"):
-        print("❌ Invalid choice. Please choose 'name' or 'id'.")
+    key = input("Search by 'id' or 'name': ").strip().lower()   # Ask user what to search (id or name)
+    if key not in ("id", "name"): #if wrong choice
+        print("❌ Invalid choice. Please choose ''id' or 'name'. ")
         return
     
-    query = input("Enter value: ").strip()  # Value to search
+    query = input("Enter search value: ").strip().lower()   # Take input value to search
 
-    # Loop through all patients to find a match
+
+    # loop through patients and check
     for p in patients:
-        if key == "name"  and p["name"].lower() == query.lower():  # Search by name (case-insensitive)
-            print(f"✅ Found: #{p['id']} {p['name']} | Age {p['age']} | Disease: {p['disease']} | Room {p['room']}")
+        if key == "id" and p["id"].lower() == query:     # If searching by ID
+            print(f"✅ Found: {p}") # Show patient dictionary
             return
-        if key == "id":
-            try:
-                if p["id"] == int(query): #Search by ID
-                    print(f"✅ Found: #{p['id']} {p['name']} | Age {p['age']} | Disease: {p['disease']} | Room {p['room']}")
-                    return
-            except ValueError:
-                print("❌ ID must be a number.")
-                return
-            
-    print("⚠️ No matching patient found.") # if no patient matches
-
-def delete_patient():
-    """
-    Delete a patient by ID
-    """
-
-    print("\n-- Delete Patient --")  # Section header
-
-    pid = input("Enter Patient ID to delete: ").strip()  # Ask for ID
-    if not pid.isdigit():
-        print("❌ Invlaid ID. Must be a number.")
-        return
-    
-    pid = int(pid)
-    for i, p in enumerate(patients):
-        if p["id"] == pid:  #Find patient by ID
-            deleted = patients.pop(i) # Remove patient from list
-            print(f"🗑️  Deleted Patient #{deleted['id']}: {deleted['name']}")
+        if key == "name" and p["name"].lower() == query: # If searching by name
+            print(f"✅ Found: {p}")   # Show patient dictionary
             return
         
-    print("⚠️ Patient ID not found.")  # if no patient matches
+        print("⚠️ No matching patient found.")  #if no match found
+
+
+
+
+
+def discharge_patient():
+    """ Discharge a patient and auto-generate receipt """
+    print("\n-- 🏠 Discharge Patient --")
+
+    pid = input("Enter Patient ID to discharge: ").strip().lower()   # Ask ID of patient to discharge
+    for p in patients:
+        if p["id"].lower() == pid:   # Check if ID matches
+            if p["status"] == "Discharged":   # If already discharged
+                print("⚠️ Patient already discharged.")
+                return
+            p["status"] = "Discharged"   # Update status to Discharged
+            print(f"✅ Patient {p['name']} ({p['id']}) has been discharged.")
+
+            # Generate receipt after discharge
+            print("\n-- 🧾 Receipt Generated Automatically --")
+            print("="*50)
+            print("         🏥 CITY HOSPITAL RECEIPT 🏥")
+            print("="*50)
+            print(f"Receipt Date : {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}")
+            print(f"Patient ID   : {p['id']}")
+            print(f"Name         : {p['name']}")
+            print(f"Age          : {p['age']}")
+            print(f"Disease      : {p['disease']}")
+            print(f"Doctor       : {p['doctor']}")
+            print(f"Room Number  : {p['room']}")
+            print(f"Status       : {p['status']}")
+            print(f"Bill Amount  : {p['bill']} PKR")
+            print("="*50)
+            print("✅ Thank you for choosing City Hospital!")
+            print("   Get Well Soon ❤️")
+            print("="*50)
+            return
+
+    print("⚠️ Patient ID not found.")   # If ID not found
+
+
+# ------------------------------
+# Receipt Function
+# ------------------------------
+
+
+
+def generate_receipt():
+    """ Generate hospital treatment receipt for a patient (manual option) """
+    print("\n-- 🧾 Generate Receipt --")
+
+    pid = input("Enter Patient ID: ").strip().lower()   # Ask ID for manual receipt
+    for p in patients:
+        if p["id"].lower() == pid:   # If patient exists
+            print("\n" + "="*50)
+            print("         🏥 CITY HOSPITAL RECEIPT 🏥")
+            print("="*50)
+            print(f"Receipt Date : {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}")
+            print(f"Patient ID   : {p['id']}")
+            print(f"Name         : {p['name']}")
+            print(f"Age          : {p['age']}")
+            print(f"Disease      : {p['disease']}")
+            print(f"Doctor       : {p['doctor']}")
+            print(f"Room Number  : {p['room']}")
+            print(f"Status       : {p['status']}")
+            print(f"Bill Amount  : {p['bill']} PKR")
+            print("="*50)
+            print("✅ Thank you for choosing City Hospital!")
+            print("   Get Well Soon ❤️")
+            print("="*50)
+            return
+
+    print("⚠️ Patient ID not found.")   # If ID not found
 
 
 # ------------------------------
 # Main Program Loop
 # ------------------------------
 
-
 def main():
-    """
-    Main program loop for CLI menu navigation
-    """
-    while True: # Keep running until user exits
-        print_menu()  # Show main menu
-        choice = input("Enter Choice (1-5): ").strip()  # get user input
+    """ Main program loop """
+    while True:   # Infinite loop until user exits
+        print_menu()   # Show menu options
+        choice = input("Enter Choice (1-6): ").strip()   # Take input for menu
 
-        if choice == "1":
-            add_patient()  # Call add patient function
-        elif choice == "2":
-            view_patients() # Call view patients function
-        elif choice == "3":
-            search_patient()  # call search patient function
-        elif choice == "4":
-            delete_patient()   # Call delete patient function
-        elif choice == "5":
-            print("👋 Goodbye! Exiting Hospital Management System...")
-            break  # Exit loop and program
-        else:
-            print("❌ Invalid choice. Please enter a number between 1-5.")
-
-# ------------------------------
-# Run the program
-# ------------------------------
+        if choice == "1":   # If choice is 1 → admit new patient
+            add_patient()
+        elif choice == "2":   # If choice is 2 → view all patients
+            view_patients()
+        elif choice == "3":   # If choice is 3 → search patient
+            search_patient()
+        elif choice == "4":   # If choice is 4 → discharge patient
+            discharge_patient()
+        elif choice == "5":   # If choice is 5 → generate receipt manually
+            generate_receipt()
+        elif choice == "6":   # If choice is 6 → exit program
+            print("👋 Goodbye! Thank you for using City Hospital System.")
+            break   # Exit loop
+        else:   # If wrong input
+            print("❌ Invalid choice. Please enter a number between 1-6.")
 
 
-if __name__ == "__main__":  #→ run this file, not when imported.” ✅
-    main()  # Start the program
+# Run main program only if file is run directly
+if __name__ == "__main__":
+    main()   # Call main function
