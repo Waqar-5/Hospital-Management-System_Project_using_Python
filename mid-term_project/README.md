@@ -1,4 +1,10 @@
+
 # 🏥 Hospital Management System (Basic CLI)
+
+<img width="540" height="456" alt="Image" src="https://github.com/user-attachments/assets/2a6c63a3-2e40-48d1-9d4b-967913f4b462" />
+
+
+
 
 ## Overview
 This is a **Command-Line Hospital Management System** built using **basic Python concepts** such as **lists, dictionaries, loops, conditions, and functions**.  
@@ -83,7 +89,8 @@ Can be extended later to add staff, departments, or reports.
 
 Author
 
-Waqar Ali – GitHub Profile
+Waqar Ali – https://github.com/Waqar-5/
+
 
 
 License
@@ -107,4 +114,19 @@ If you want, I can also make an **enhanced version with badges, contributions, a
 Do you want me to do that?
 
 
+<<<<<<< HEAD
 ![alt text](<_- visual selection (2).png>)
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> d4eb2a194661eb68c21153b81d89761235399e45
